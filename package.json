@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-theme-next",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.104",
+    "@iconify-json/simple-icons": "^1.2.80",
+    "@nuxt/content": "3.13.0",
+    "@nuxt/scripts": "1.0.5",
+    "@nuxt/ui": "^4.7.0",
+    "@unhead/vue": "^2.1.13",
+    "better-sqlite3": "^12.9.0",
+    "nuxt": "^4.4.2",
+    "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^8.2.0",
+    "@nuxt/eslint": "^1.15.2",
+    "eslint": "^10.2.1",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.2.7"
+  }
+}
