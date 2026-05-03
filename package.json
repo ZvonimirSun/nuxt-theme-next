@@ -8,10 +8,11 @@
     "dev": "nuxt dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@iconify-json/fa": "^1.2.2",
     "@iconify-json/lucide": "^1.2.104",
     "@iconify-json/simple-icons": "^1.2.80",
     "@nuxt/content": "3.13.0",
@@ -19,7 +20,9 @@
     "@nuxt/ui": "^4.7.0",
     "@unhead/vue": "^2.1.13",
     "better-sqlite3": "^12.9.0",
+    "dayjs": "^1.11.20",
     "nuxt": "^4.4.2",
+    "sass": "^1.99.0",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {

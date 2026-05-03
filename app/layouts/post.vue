@@ -1,9 +1,8 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'index-page',
-})
 </script>
 
 <template>
-  <div />
+  <div class="post">
+    <slot />
+  </div>
 </template>

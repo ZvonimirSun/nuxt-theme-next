@@ -1,33 +1,11 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme static {
-  --font-sans: 'Public Sans', sans-serif;
-
-  --color-rational-50: #f9f9f9;
-  --color-rational-100: #f5f5f5;
-  --color-rational-200: #eee;
-  --color-rational-300: #ddd;
-  --color-rational-400: #ccc;
-  --color-rational-500: #bbb;
-  --color-rational-600: #999;
-  --color-rational-700: #666;
-  --color-rational-800: #555;
-  --color-rational-900: #333;
-  --color-rational-950: #222;
+@theme {
+  --font-sans: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono';
 }
 
-:root {
-  --blog-body-bg: var(--ui-bg-elevated);
-  --blog-content-bg: var(--ui-bg);
-  --blog-text: var(--ui-text);
-  --blog-heading: var(--ui-text-highlighted);
-  --blog-link: var(--ui-text);
-  --blog-link-hover: var(--ui-text-highlighted);
-  --blog-border: var(--ui-border-muted);
-  --blog-card-bg: var(--ui-bg-muted);
-  --blog-code-bg: var(--ui-bg-muted);
-  --blog-code-text: var(--ui-text);
-  --blog-quote-bg: var(--ui-bg-muted);
-  --blog-quote-border: var(--ui-border-accented);
+body {
+  @apply bg-muted box-border text-default text-base/loose font-sans;
 }
