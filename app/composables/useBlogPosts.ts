@@ -1,6 +1,5 @@
 import type { MaybeRef } from 'vue'
-import type { BlogPost } from '~/types/post'
-import { computed, unref } from 'vue'
+import dayjs from 'dayjs'
 
 export async function useBlogPosts(currentPage: MaybeRef<number>, pageSize = 10) {
   const page = computed(() => {
@@ -11,21 +10,31 @@ export async function useBlogPosts(currentPage: MaybeRef<number>, pageSize = 10)
   const { data: allPosts } = await useAsyncData('blog:posts:all', () => {
     return queryCollection('content')
       .where('path', 'LIKE', '/posts/%')
-      .all() as Promise<BlogPost[]>
+      .all()
   })
 
   const sortedPosts = computed(() => {
-    const list = (allPosts.value ?? []).map((post: BlogPost) => {
+    const list = (allPosts.value ?? []).map((post) => {
+      const date = dayjs(post.date)
+      const updated = post.updated ? dayjs(post.updated) : null
+
       const path = (post.permalink || post.path).trim()
       const withLeadingSlash = path.startsWith('/') ? path : `/${path}`
-      post.permalink = withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`
+      const permalink = withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`
 
-      return post
+      return {
+        ...post,
+        permalink,
+        datetime: date.format('YYYY-MM-DD HH:mm:ss'),
+        date: date.format('YYYY-MM-DD'),
+        updatedTime: updated ? updated.format('YYYY-MM-DD HH:mm:ss') : null,
+        updated: updated ? updated.format('YYYY-MM-DD') : null,
+      }
     })
 
     return list.sort((a, b) => {
-      const aTime = a.date ? Date.parse(a.date) : 0
-      const bTime = b.date ? Date.parse(b.date) : 0
+      const aTime = a.date ? Date.parse(a.datetime) : 0
+      const bTime = b.date ? Date.parse(b.datetime) : 0
 
       if (bTime !== aTime) {
         return bTime - aTime

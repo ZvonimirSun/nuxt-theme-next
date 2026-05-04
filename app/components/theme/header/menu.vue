@@ -17,8 +17,8 @@ const navItems = [
           :to="item.to"
           :icon="item.icon"
           size="sm"
-          class="hover:bg-elevated h-9 text-default gap-2 text-base px-5 flex menu-link rounded-none"
-          active-class="menu-item-active bg-elevated"
+          class="hover:bg-menu-item h-9 text-default gap-2 text-base px-5 flex menu-link rounded-none"
+          active-class="menu-item-active bg-menu-item"
           :label="item.label"
         />
       </li>
@@ -27,8 +27,8 @@ const navItems = [
           color="neutral"
           variant="link"
           size="sm"
-          class="w-full cursor-pointer hover:bg-elevated h-9 text-default gap-2 text-base px-5 flex menu-link rounded-none"
-          active-class="menu-item-active bg-elevated"
+          class="w-full cursor-pointer hover:bg-menu-item h-9 text-default gap-2 text-base px-5 flex menu-link rounded-none"
+          active-class="menu-item-active bg-menu-item"
         >
           搜索
         </UContentSearchButton>

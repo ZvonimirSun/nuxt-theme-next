@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import dayjs from 'dayjs'
-
 const { index: { perPage } } = usePublicConfig()
 
 const route = useRoute()
@@ -17,18 +15,6 @@ if (totalPosts.value > 0 && rawPage.value > totalPages.value) {
   })
 }
 
-function formatDate(input?: string) {
-  if (!input)
-    return ''
-
-  const value = dayjs(input)
-
-  if (!value.isValid())
-    return ''
-
-  return value
-}
-
 function pageChange(newPage: number) {
   const target = newPage === 1 ? '/' : `/page/${newPage}/`
   navigateTo(target)
@@ -40,22 +26,26 @@ function pageChange(newPage: number) {
     <div
       v-for="post in posts"
       :key="post.path"
-      class="bg-default shadow-lg p-10 post-block"
+      class="bg-content shadow-lg p-10 post-block"
     >
       <article class="post-content">
-        <header class="flex flex-col items-center post-header mb-15">
-          <h2 class="text-3xl/loose w-fit post-title-link">
-            <ULink
-              :to="post.permalink!"
+        <header class="flex flex-col items-center post-header mb-4">
+          <ULink
+            :to="post.permalink!"
+            class="
+              relative text-default
+              before:absolute before:w-full before:bottom-0 before:h-0.5 before:bg-inverted
+              before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-200 before:ease-in-out
+            "
+          >
+            <h2
               class="
-                relative text-default
-                before:absolute before:w-full before:-bottom-1 before:h-0.5 before:bg-inverted
-                before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-200 before:ease-in-out
+                text-3xl/normal text-center w-fit post-title-link
               "
             >
               {{ post.title }}
-            </ULink>
-          </h2>
+            </h2>
+          </ULink>
           <div class="text-muted text-sm post-meta-container">
             <div class="flex flex-wrap items-center gap-2 post-meta justify-center">
               <span class="flex items-center gap-1 post-meta-item">
@@ -63,18 +53,16 @@ function pageChange(newPage: number) {
                 <span class="post-meta-item-text">发表于</span>
                 <time
                   class="border-dashed border-b"
-                  :title="`创建时间: ${formatDate(post.date)?.format('YYYY-MM-DD HH:mm:ss')}`"
-                >{{ formatDate(post.date)?.format('YYYY-MM-DD') }}</time>
+                  :title="`创建时间: ${post.datetime}`"
+                >{{ post.date }}</time>
               </span>
             </div>
           </div>
         </header>
         <div class="flex flex-col items-center post-body">
-          <p class="text-lg/loose w-full">
-            {{ post.description }}
-          </p>
+          <ContentRenderer class="text-lg/loose w-full" :value="post.meta.excerpt" />
           <UButton
-            class="mt-10 cursor-pointer post-button"
+            class="mt-4 cursor-pointer post-button"
             :to="post.permalink!"
             color="neutral"
             variant="outline"
@@ -85,10 +73,13 @@ function pageChange(newPage: number) {
       </article>
     </div>
     <UPagination
-      class="self-center p-2 bg-default shadow-lg w-full flex justify-center"
+      class="self-center p-2 bg-content shadow-lg w-full flex justify-center"
       :page="rawPage"
       :total="totalPosts"
       show-edges
+      color="neutral"
+      active-color="neutral"
+      variant="outline"
       :sibling-count="1"
       @update:page="pageChange"
     />

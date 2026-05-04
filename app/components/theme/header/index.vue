@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-default shadow-lg header">
+  <header class="bg-content shadow-lg header">
     <ThemeHeaderBrand />
     <ThemeHeaderMenu />
   </header>
