@@ -34,6 +34,6 @@ const navItems = [
         </UContentSearchButton>
       </li>
     </ul>
-    <LazyUContentSearch />
+    <ThemeHeaderSearch />
   </nav>
 </template>

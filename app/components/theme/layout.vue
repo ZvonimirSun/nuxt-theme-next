@@ -33,10 +33,10 @@ useSeoMeta({
         <ThemeHeader />
         <ThemeSidebar />
       </div>
-      <div class="flex-1 main-inner">
-        <NuxtLayout>
+      <div class="flex-1 flex flex-col gap-4 main-inner">
+        <slot>
           <NuxtPage />
-        </NuxtLayout>
+        </slot>
       </div>
     </main>
   </UApp>

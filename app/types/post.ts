@@ -1,8 +1,6 @@
-export interface BlogPost {
-  path: string
-  title?: string
-  description?: string
-  date?: string
-  permalink?: string
-  [key: string]: any
+import type { ContentCollectionItem } from '@nuxt/content'
+
+export interface FormattedPost extends ContentCollectionItem {
+  datetime: string
+  updatedTime?: string
 }

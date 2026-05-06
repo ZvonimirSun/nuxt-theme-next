@@ -1,29 +1,28 @@
-# Nuxt dev/build outputs
+node_modules
+*.log
+.nuxt
+nuxt.d.ts
 .output
 .data
-.nuxt
-.nitro
-.cache
-dist
-
-# Node dependencies
-node_modules
-
-# Logs
-logs
-*.log
-
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# Local env files
 .env
-.env.*
-!.env.example
+package-lock.json
+framework
+dist
+.DS_Store
+
+# Yarn
+.yarn/cache
+.yarn/*state*
+
+# Local History
+.history
+
+# VSCode
+.vscode/
+
+# JetBrains/WebStorm
+.idea/
 
 # Local markdown posts (Hexo-like source folder)
-content/posts/*
-!content/posts/.gitkeep
-
+.playground/content
+.playground/content/**/.gitkeep

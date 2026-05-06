@@ -1,28 +1,13 @@
 <script lang="ts" setup>
-const { index: { perPage } } = usePublicConfig()
+const { posts, page, total } = await usePosts()
 
-const route = useRoute()
-const rawPage = computed(() => {
-  return Number.parseInt(String(route.params.page ?? '1'))
-})
-
-const { posts, totalPosts, totalPages } = await useBlogPosts(rawPage, perPage)
-
-if (totalPosts.value > 0 && rawPage.value > totalPages.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Page not found',
-  })
-}
-
-function pageChange(newPage: number) {
-  const target = newPage === 1 ? '/' : `/page/${newPage}/`
-  navigateTo(target)
+function to(newPage: number) {
+  return newPage === 1 ? '/' : `/page/${newPage}/`
 }
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 index">
+  <div v-if="posts && page" class="flex flex-col gap-4">
     <div
       v-for="post in posts"
       :key="post.path"
@@ -33,8 +18,9 @@ function pageChange(newPage: number) {
           <ULink
             :to="post.permalink!"
             class="
+              cursor-pointer
               relative text-default
-              before:absolute before:w-full before:bottom-0 before:h-0.5 before:bg-inverted
+              before:absolute before:right-0 before:left-0 before:bottom-0 before:h-0.5 before:bg-inverted
               before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-200 before:ease-in-out
             "
           >
@@ -60,8 +46,9 @@ function pageChange(newPage: number) {
           </div>
         </header>
         <div class="flex flex-col items-center post-body">
-          <ContentRenderer class="text-lg/loose w-full" :value="post.meta.excerpt" />
+          <ContentRenderer class="text-lg/loose w-full" :value="post.meta?.excerpt || post" :prose="true" />
           <UButton
+            v-if="post.meta?.excerpt"
             class="mt-4 cursor-pointer post-button"
             :to="post.permalink!"
             color="neutral"
@@ -74,16 +61,15 @@ function pageChange(newPage: number) {
     </div>
     <UPagination
       class="self-center p-2 bg-content shadow-lg w-full flex justify-center"
-      :page="rawPage"
-      :total="totalPosts"
+      :page="page"
+      :total="total"
+      :to="to"
       show-edges
       color="neutral"
       active-color="neutral"
       variant="outline"
       :sibling-count="1"
-      @update:page="pageChange"
     />
-    <slot />
   </div>
 </template>
 
