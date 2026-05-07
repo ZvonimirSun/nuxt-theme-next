@@ -12,4 +12,7 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+  experimental: {
+    payloadExtraction: 'client',
+  },
 })
