@@ -4,43 +4,6 @@
 
 `nuxt-theme-next` 是一个基于 Nuxt 4、Nuxt Content 和 Nuxt UI 的博客主题层（layer）。
 
-项目内置了文章列表、文章详情、搜索、分页与 404 处理，并通过 `.playground` 提供了开箱即用的本地预览环境。
-
-## 特性
-
-- 基于 Nuxt Layer，可通过 `extends` 复用主题
-- 基于 Nuxt Content 的 Markdown 博客内容管理
-- 首页列表 + `/page/:page/` 分页
-- 文章搜索（`UContentSearch`）
-- 文章永久链接支持（`permalink`），未配置时自动回退
-- 静态站点构建（`nitro.preset: static`）
-
-## 环境要求
-
-- 包管理器：`pnpm@10.33.2`（见 `package.json`）
-- Node.js：请使用与 Nuxt 4 兼容的版本（CI 当前使用 Node 24）
-
-## 快速开始（本仓库）
-
-```bash
-pnpm install
-pnpm dev
-```
-
-默认会启动 `.playground`，用于调试主题效果。
-
-## 可用脚本
-
-```bash
-pnpm dev          # 运行 .playground 开发环境
-pnpm dev:prepare  # 预生成 Nuxt 类型与构建产物
-pnpm build        # 构建 .playground
-pnpm generate     # 生成静态站点
-pnpm preview      # 预览生产构建
-pnpm lint         # ESLint 自动修复
-pnpm typecheck    # 类型检查（.playground）
-```
-
 ## 作为主题层使用
 
 在你的 Nuxt 项目中安装此包后，可在 `nuxt.config.ts` 中通过 `extends` 引入：
@@ -131,6 +94,45 @@ permalink: /my-first-post/
 - 普通页面：由 `pages` 集合按路径匹配
 
 `transformers/path-handler.ts` 会为 `posts` 下未设置 `permalink` 的文章自动生成链接（基于文件路径）。
+
+## 扩展开发
+
+项目内置了文章列表、文章详情、搜索、分页与 404 处理，并通过 `.playground` 提供了开箱即用的本地预览环境。
+
+### 特性
+
+- 基于 Nuxt Layer，可通过 `extends` 复用主题
+- 基于 Nuxt Content 的 Markdown 博客内容管理
+- 首页列表 + `/page/:page/` 分页
+- 文章搜索（`UContentSearch`）
+- 文章永久链接支持（`permalink`），未配置时自动回退
+- 静态站点构建（`nitro.preset: static`）
+
+### 环境要求
+
+- 包管理器：`pnpm@10.33.2`（见 `package.json`）
+- Node.js：请使用与 Nuxt 4 兼容的版本（CI 当前使用 Node 24）
+
+### 快速开始（本仓库）
+
+```bash
+pnpm install
+pnpm dev
+```
+
+默认会启动 `.playground`，用于调试主题效果。
+
+### 可用脚本
+
+```bash
+pnpm dev          # 运行 .playground 开发环境
+pnpm dev:prepare  # 预生成 Nuxt 类型与构建产物
+pnpm build        # 构建 .playground
+pnpm generate     # 生成静态站点
+pnpm preview      # 预览生产构建
+pnpm lint         # ESLint 自动修复
+pnpm typecheck    # 类型检查（.playground）
+```
 
 ## 目录结构（核心）
 
