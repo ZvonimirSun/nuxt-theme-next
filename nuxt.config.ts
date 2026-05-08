@@ -60,7 +60,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     '@nuxt/content',
-    '@nuxt/scripts',
   ],
 
   devtools: {
