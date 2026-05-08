@@ -1,3 +1,3 @@
 <template>
-  <aside class="w-60 sidebar" />
+  <aside class="sidebar" />
 </template>

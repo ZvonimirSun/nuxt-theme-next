@@ -13,6 +13,7 @@ export default defineNuxtConfig({
       title: '',
       subtitle: '',
       description: '',
+      author: '',
       language: 'zh-CN',
 
       indexGenerator: {
@@ -22,6 +23,37 @@ export default defineNuxtConfig({
       search: {
         enable: false,
         mode: 'local',
+      },
+
+      // ---------------------------------------------------------------
+      // Menu Settings
+      // ---------------------------------------------------------------
+      menu: [
+        { label: '首页', icon: 'lucide:home', to: '/' },
+        // { label: '关于', icon: 'lucide:user', to: '/about/' },
+        // { label: '标签', icon: 'lucide:tags', to: '/tags/' },
+        // { label: '分类', icon: 'lucide:layout-grid', to: '/categories/' },
+        // { label: '归档', icon: 'lucide:archive', to: '/archives/' },
+      ],
+
+      // ---------------------------------------------------------------
+      // Sidebar Settings
+      // ---------------------------------------------------------------
+
+      sidebar: {
+        widthExpanded: 320,
+        widthDualColumn: 240,
+      },
+
+      // Sidebar Avatar
+      avatar: {
+        url: '',
+        rounded: false,
+      },
+
+      // Table of Contents in the Sidebar
+      toc: {
+        enable: true,
       },
     },
   },

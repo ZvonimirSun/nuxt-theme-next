@@ -1,7 +1,14 @@
 <script lang="ts" setup>
 import { zh_cn } from '@nuxt/ui/locale'
 
-const { language, title, description } = usePublicConfig()
+const {
+  language,
+  title,
+  description,
+  sidebar: {
+    widthDualColumn,
+  },
+} = usePublicConfig()
 
 useHead({
   meta: [
@@ -29,7 +36,12 @@ useSeoMeta({
   <UApp :locale="zh_cn">
     <div class="bg-black h-0.75 headband" />
     <main class="items-stretch flex gap-4 justify-between mx-auto my-0 w-[calc(100%---spacing(5))] lg:w-6xl main">
-      <div class="column">
+      <div
+        :style="{
+          width: `${widthDualColumn}px`,
+        }"
+        class="column"
+      >
         <ThemeHeader />
         <ThemeSidebar />
       </div>
