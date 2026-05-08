@@ -1,7 +1,7 @@
 import type { FormattedPost } from '../types/post'
 
 export async function usePosts() {
-  const { index: { perPage } } = usePublicConfig()
+  const { indexGenerator: { perPage } } = usePublicConfig()
 
   const route = useRoute()
   const isIndexPage = computed(() => route.path === '/' || route.path.startsWith('/page/'))

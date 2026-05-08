@@ -14,8 +14,14 @@ export default defineNuxtConfig({
       subtitle: '',
       description: '',
       language: 'zh-CN',
-      index: {
+
+      indexGenerator: {
         perPage: 10,
+      },
+
+      search: {
+        enable: false,
+        mode: 'local',
       },
     },
   },

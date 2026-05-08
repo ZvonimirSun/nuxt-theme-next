@@ -17,6 +17,8 @@ const { data: files } = await useAsyncData('search', async () => {
     item.id = (item as any).permalink as string
   })
   return query
+}, {
+  server: false,
 })
 
 const searchTerm = ref('')

@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+const {
+  search: {
+    enable,
+  },
+} = usePublicConfig()
+
 const navItems = [
   { label: '首页', icon: 'lucide:home', to: '/' },
   { label: '标签', icon: 'lucide:tags', to: '/tags/' },
@@ -22,7 +28,7 @@ const navItems = [
           :label="item.label"
         />
       </li>
-      <li class="menu-item">
+      <li v-if="enable" class="menu-item">
         <UContentSearchButton
           color="neutral"
           variant="link"
@@ -32,8 +38,8 @@ const navItems = [
         >
           搜索
         </UContentSearchButton>
+        <ThemePartSearch />
       </li>
     </ul>
-    <ThemeHeaderSearch />
   </nav>
 </template>
