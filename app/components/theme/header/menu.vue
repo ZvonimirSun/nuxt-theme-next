@@ -1,22 +1,20 @@
 <script lang="ts" setup>
+import type { MenuItem } from '#layers/nuxt-theme-next/app/types/menu'
+
 const {
+  menu,
   search: {
     enable,
   },
 } = usePublicConfig()
 
-const navItems = [
-  { label: '首页', icon: 'lucide:home', to: '/' },
-  { label: '标签', icon: 'lucide:tags', to: '/tags/' },
-  { label: '归档', icon: 'lucide:archive', to: '/archives/' },
-  { label: '友链', icon: 'lucide:link', to: '/links/' },
-]
+const menuItems = computed(() => menu as MenuItem[])
 </script>
 
 <template>
   <nav class="site-nav">
-    <ul class="py-4 main-menu menu">
-      <li v-for="(item, index) in navItems" :key="index" class="menu-item">
+    <ul v-if="menuItems.length" class="py-4 main-menu menu">
+      <li v-for="(item, index) in menuItems" :key="index" class="menu-item">
         <UButton
           color="neutral"
           variant="link"

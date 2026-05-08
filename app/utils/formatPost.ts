@@ -1,5 +1,5 @@
 import type { ContentCollectionItem } from '@nuxt/content'
-import type { FormattedPost } from '../types/post'
+import type { FormattedPost } from '#layers/nuxt-theme-next/app/types/post'
 
 export function formatPost(post: ContentCollectionItem): FormattedPost {
   return {

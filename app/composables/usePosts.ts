@@ -1,4 +1,4 @@
-import type { FormattedPost } from '../types/post'
+import type { FormattedPost } from '#layers/nuxt-theme-next/app/types/post'
 
 export async function usePosts() {
   const { indexGenerator: { perPage } } = usePublicConfig()

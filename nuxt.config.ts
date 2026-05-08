@@ -29,7 +29,7 @@ export default defineNuxtConfig({
       // Menu Settings
       // ---------------------------------------------------------------
       menu: [
-        { label: '首页', icon: 'lucide:home', to: '/' },
+        // { label: '首页', icon: 'lucide:home', to: '/' },
         // { label: '关于', icon: 'lucide:user', to: '/about/' },
         // { label: '标签', icon: 'lucide:tags', to: '/tags/' },
         // { label: '分类', icon: 'lucide:layout-grid', to: '/categories/' },
@@ -54,6 +54,20 @@ export default defineNuxtConfig({
       // Table of Contents in the Sidebar
       toc: {
         enable: true,
+      },
+
+      // ---------------------------------------------------------------
+      // Footer Settings
+      // ---------------------------------------------------------------
+      footer: {
+        since: '',
+        copyright: true,
+        icon: {
+          enable: true,
+          name: 'lucide:heart',
+          color: '#ff0000',
+          animated: false,
+        },
       },
     },
   },

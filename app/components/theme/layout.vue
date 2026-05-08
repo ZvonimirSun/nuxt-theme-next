@@ -35,7 +35,7 @@ useSeoMeta({
 <template>
   <UApp :locale="zh_cn">
     <div class="bg-black h-0.75 headband" />
-    <main class="items-stretch flex gap-4 justify-between mx-auto my-0 w-[calc(100%---spacing(5))] lg:w-6xl main">
+    <main class="items-stretch flex gap-4 justify-between mx-auto my-0 w-[calc(100%---spacing(5))] lg:w-6xl 2xl:w-3/4 main">
       <div
         :style="{
           width: `${widthDualColumn}px`,
@@ -51,6 +51,14 @@ useSeoMeta({
         </slot>
       </div>
     </main>
+    <footer
+      :style="{
+        paddingLeft: `${widthDualColumn + 16}px`,
+      }"
+      class="mx-auto my-0 w-[calc(100%---spacing(5))] lg:w-6xl 2xl:w-3/4 footer"
+    >
+      <ThemeFooter />
+    </footer>
   </UApp>
 </template>
 

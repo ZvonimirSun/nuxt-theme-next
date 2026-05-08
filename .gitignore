@@ -26,3 +26,5 @@ dist
 # Local markdown posts (Hexo-like source folder)
 .playground/content
 .playground/content/**/.gitkeep
+
+.codex
